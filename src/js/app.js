@@ -1,11 +1,22 @@
-// TODO: write code here
+document.addEventListener("DOMContentLoaded", () => {
+  const elements = document.querySelectorAll(".element");
+  const image = document.createElement("img");
+  image.setAttribute(
+    "src",
+    "https://raw.githubusercontent.com/netology-code/ahj-homeworks/video/dom/pic/goblin.png"
+  );
 
-// comment this to pass build
-const unusedVariable = "variable";
+  setInterval(() => {
+    let currentElements = [];
 
-// for demonstration purpose only
-export default function demo(value) {
-  return `Demo: ${value}`;
-}
+    for (el of elements) {
+      if (!el.hasChildNodes()) {
+        currentElements.push(el);
+      }
+    }
 
-console.log("app.js included");
+    let random = Math.floor(Math.random() * currentElements.length);
+    const element = currentElements[random];
+    element.appendChild(image);
+  }, 1000);
+});
